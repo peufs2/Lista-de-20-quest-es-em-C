@@ -1,0 +1,43 @@
+// Monitoramento do servidor 08
+
+#include <stdio.h>
+
+
+int main() {
+	int cpu;
+    int leituras = 0;
+    int criticas = 0;
+
+    printf("Digite o uso da CPU (-1 para encerrar): ");
+    scanf("%d", &cpu);
+
+    while (cpu != -1) {
+
+        if (cpu >= 0 && cpu <= 100) {
+
+            leituras++;
+
+            if (cpu <= 69) {
+                printf("NORMAL\n");
+
+            } else if (cpu <= 89) {
+                printf("ALERTA\n");
+
+            } else {
+                printf("CRITICO\n");
+                criticas++;
+            }
+
+        } else {
+            printf("Percentual invalido!\n");
+        }
+
+        printf("Digite outro percentual (-1 para encerrar): ");
+        scanf("%d", &cpu);
+    }
+
+    printf("\nTotal de leituras: %d\n", leituras);
+    printf("Leituras criticas: %d\n", criticas);
+
+	return 0;
+}

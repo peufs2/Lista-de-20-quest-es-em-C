@@ -1,0 +1,27 @@
+// Login com limite de tentativas 06
+
+#include <stdio.h>
+
+int main
+	int senha;
+    int senhaCorreta = 1234;
+    int tentativas = 0;
+
+    while (tentativas < 3) {
+
+        printf("Digite a senha: ");
+        scanf("%d", &senha);
+
+        tentativas++;
+
+        if (senha == senhaCorreta) {
+            printf("Acesso autorizado!\n");
+            return 0;
+        } else {
+            printf("Senha incorreta!\n");
+        }
+    }
+
+    printf("Usuario bloqueado!\n");
+	return 0;
+}

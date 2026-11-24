@@ -1,0 +1,18 @@
+// Conversor de armazenamento 02 
+
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+int gb, mb, kb;
+
+printf("Insira quantos Gigabytes voce deseja converter: ");
+scanf("%d", &gb);
+
+mb = gb * 1024;
+kb = mb * 1024;
+
+printf("\n O total de megabytes sao: %d\n", mb);
+printf("\n O total de kilobytes sao: %d\n", kb);
+
+	return 0;
+}

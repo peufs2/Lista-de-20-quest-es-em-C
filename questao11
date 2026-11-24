@@ -1,0 +1,29 @@
+// Jogo de adviinhacao 11
+
+#include <stdio.h>
+
+
+int main() {
+    int numeroSecreto, palpite, tentativas = 0;
+
+
+    printf("=== JOGO DE ADIVINHACAO ===\n");
+    printf("Tente adivinhar o numero secreto entre 1 e 100.\n\n");
+
+    do {
+        printf("Digite o seu palpite: ");
+        scanf("%d", &palpite);
+        tentativas++;
+
+        if (palpite < numeroSecreto) {
+            printf("O numero secreto e MAIOR!\n\n");
+        } else if (palpite > numeroSecreto) {
+            printf("O numero secreto e MENOR!\n\n");
+        } else {
+            printf("\nParabens! Acertou no numero %d em %d tentativa(s)!\n", numeroSecreto, tentativas);
+        }
+
+    } while (palpite != numeroSecreto);
+
+    return 0;
+}

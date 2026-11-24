@@ -1,0 +1,88 @@
+//Painel simplificado de estacionamento
+
+#include <stdio.h>
+
+
+int main() {
+	#define PRODUTOS 4
+	#define DIAS 7
+	int i, j;
+	void exibirMatriz(int estoque[PRODUTOS][DIAS]);
+int totalPorProduto(int estoque[PRODUTOS][DIAS], int produto);
+int totalPorDia(int estoque[PRODUTOS][DIAS], int dia);
+int diaMaiorMovimentacao(int estoque[PRODUTOS][DIAS]);
+
+int main() {
+    int estoque[PRODUTOS][DIAS];
+
+    for ( i = 0; i < PRODUTOS; i++) {
+        printf("\n--- Produto %d ---\n", i + 1);
+        for ( j = 0; j < DIAS; j++) {
+            printf("Quantidade movimentada no Dia %d: ", j + 1);
+            scanf("%d", &estoque[i][j]);
+        }
+    }
+
+    exibirMatriz(estoque);
+
+    printf("\n--- TOTAL POR PRODUTO ---\n");
+    for ( i = 0; i < PRODUTOS; i++) {
+        printf("Produto %d: %d unidades\n", i + 1, totalPorProduto(estoque, i));
+    }
+
+    printf("\n--- TOTAL POR DIA ---\n");
+    for ( j = 0; j < DIAS; j++) {
+        printf("Dia %d: %d unidades\n", j + 1, totalPorDia(estoque, j));
+    }
+
+    int melhorDia = diaMaiorMovimentacao(estoque);
+    printf("\nDia com maior movimentacao geral: Dia %d (%d unidades)\n",
+           melhorDia + 1,
+           totalPorDia(estoque, melhorDia));
+
+    return 0;
+}
+
+	void exibirMatriz(int estoque[PRODUTOS][DIAS]) {
+    printf("\n=== MATRIZ DE MOVIMENTACAO (PRODUTOS x DIAS) ===\n");
+    printf("          D1   D2   D3   D4   D5   D6   D7\n");
+    for (int i = 0; i < PRODUTOS; i++) {
+        printf("Prod %d: ", i + 1);
+        for (int j = 0; j < DIAS; j++) {
+            printf("%4d ", estoque[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int totalPorProduto(int estoque[PRODUTOS][DIAS], int produto) {
+    int soma = 0;
+    for (int j = 0; j < DIAS; j++) {
+        soma += estoque[produto][j];
+    }
+    return soma;
+}
+
+int totalPorDia(int estoque[PRODUTOS][DIAS], int dia) {
+    int soma = 0;
+    for (int i = 0; i < PRODUTOS; i++) {
+        soma += estoque[i][dia];
+    }
+    return soma;
+}
+
+int diaMaiorMovimentacao(int estoque[PRODUTOS][DIAS]) {
+    int indiceMaior = 0;
+    int maiorTotal = totalPorDia(estoque, 0);
+
+    for (int j = 1; j < DIAS; j++) {
+        int totalAtual = totalPorDia(estoque, j);
+        if (totalAtual > maiorTotal) {
+            maiorTotal = totalAtual;
+            indiceMaior = j;
+        }
+    }
+    return indiceMaior;
+}
+	return 0;
+}

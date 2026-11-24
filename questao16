@@ -1,0 +1,68 @@
+// Controle de vendas 16
+
+#include <stdio.h>
+
+
+int main() {
+	void exibirVendas(float vendas[], int tamanho);
+	float calcularFaturamento(float vendas[], int tamanho);
+	float localizarMaiorVenda(float vendas[], int tamanho);
+	int contarVendasAcima500(float vendas[], int tamanho);
+
+int main() {
+    float vendas[10];
+
+    // Leitura do valor das 10 vendas
+    for (int i = 0; i < 10; i++) {
+        printf("Digite o valor da %da venda: R$ ", i + 1);
+        scanf("%f", &vendas[i]);
+    }
+
+    printf("\n--- RELATORIO DE VENDAS ---\n");
+    exibirVendas(vendas, 10);
+    printf("\nFaturamento total: R$ %.2f\n", calcularFaturamento(vendas, 10));
+    printf("Maior venda: R$ %.2f\n", localizarMaiorVenda(vendas, 10));
+    printf("Vendas acima de R$ 500,00: %d\n", contarVendasAcima500(vendas, 10));
+
+    return 0;
+}
+
+// Implementação das funções
+void exibirVendas(float vendas[], int tamanho) {
+    printf("Valores registados: ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("R$ %.2f", vendas[i]);
+        if (i < tamanho - 1) {
+            printf(" | ");
+        }
+    }
+    printf("\n");
+}
+
+float calcularFaturamento(float vendas[], int tamanho) {
+    float total = 0.0;
+    for (int i = 0; i < tamanho; i++) {
+        total += vendas[i];
+    }
+    return total;
+}
+
+float localizarMaiorVenda(float vendas[], int tamanho) {
+    float maior = vendas[0];
+    for (int i = 1; i < tamanho; i++) {
+        if (vendas[i] > maior) {
+            maior = vendas[i];
+        }
+    }
+    return maior;
+}
+
+int contarVendasAcima500(float vendas[], int tamanho) {
+    int contador = 0;
+    for (int i = 0; i < tamanho; i++) {
+        if (vendas[i] > 500.0) {
+            contador++;
+        }
+    }
+	return 0;
+}

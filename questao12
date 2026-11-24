@@ -1,0 +1,21 @@
+// Validador de opçao 12
+
+#include <stdio.h>
+
+int main() {
+	char resposta;
+
+    do {
+        printf("Deseja continuar? (S/N): ");
+        scanf(" %c", &resposta);
+        resposta = toupper(resposta);
+
+        if (resposta != 'S' && resposta != 'N') {
+            printf("Opcao invalida! Digite apenas S ou N.\n");
+        }
+    } while (resposta != 'S' && resposta != 'N');
+
+    printf("%s\n", (resposta == 'S') ? "A operacao ira continuar." : "A operacao sera encerrada.");
+
+	return 0;
+}

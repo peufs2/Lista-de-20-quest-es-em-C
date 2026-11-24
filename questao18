@@ -1,0 +1,40 @@
+// Sistemas de notas 18
+
+#include <stdio.h>
+
+int main() {
+	float notas[5][3];
+    float soma, media, maiorNota = 0.0;
+    int i, j;
+
+    for (i = 0; i < 5; i++) {
+        printf("\n--- Aluno %d ---\n", i + 1);
+        for ( j = 0; j < 3; j++) {
+            printf("Digite a %da nota: ", j + 1);
+            scanf("%f", &notas[i][j]);
+
+           
+            if ((i == 0 && j == 0) || notas[i][j] > maiorNota) {
+                maiorNota = notas[i][j];
+            }
+        }
+    }
+
+    printf("\n=== RESULTADOS DA TURMA ===\n");
+    for ( i = 0; i < 5; i++) {
+        soma = 0.0;
+        for ( j = 0; j < 3; j++) {
+            soma += notas[i][j];
+        }
+        media = soma / 3.0;
+
+        printf("Aluno %d - Media: %.2f - Situacao: %s\n",
+               i + 1,
+               media,
+               (media >= 7.0) ? "Aprovado" : "Reprovado");
+    }
+
+    printf("\nMaior nota registada na turma: %.2f\n", maiorNota);
+
+	return 0;
+}

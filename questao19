@@ -1,0 +1,52 @@
+//Mapa de assentos 19
+
+#include <stdio.h>
+
+
+int main() {
+	int i, j;
+	void exibirMapa(int sala[4][5]) {
+    printf("\n=== MAPA DE ASSENTOS (0 = Livre | 1 = Ocupado) ===\n");
+    printf("     C1 C2 C3 C4 C5\n");
+    for ( i = 0; i < 4; i++) {
+        printf("L%d:  ", i + 1);
+        for ( j = 0; j < 5; j++) {
+            printf(" %d ", sala[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+    int sala[4][5] = {0};
+    int linha, coluna;
+    char continuar;
+
+    exibirMapa(sala);
+
+    do {
+        printf("\nInforme a linha (1 a 4): ");
+        scanf("%d", &linha);
+        printf("Informe o assento/coluna (1 a 5): ");
+        scanf("%d", &coluna);
+
+        if (linha < 1 || linha > 4 || coluna < 1 || coluna > 5) {
+            printf("Posicao invalida! Escolha linhas de 1 a 4 e assentos de 1 a 5.\n");
+        } else if (sala[linha - 1][coluna - 1] == 1) {
+            printf("Erro: O assento L%d-C%d ja esta ocupado!\n", linha, coluna);
+        } else {
+            sala[linha - 1][coluna - 1] = 1;
+            printf("Assento L%d-C%d reservado com sucesso!\n", linha, coluna);
+        }
+
+        exibirMapa(sala);
+
+        printf("\nDeseja reservar outro assento? (S/N): ");
+        scanf(" %c", &continuar);
+
+    } while (continuar == 'S' || continuar == 's');
+
+    printf("Sistema de reservas encerrado.\n");
+
+
+}

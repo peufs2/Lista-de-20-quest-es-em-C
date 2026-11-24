@@ -1,0 +1,22 @@
+//Analise de pedido 04
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+	 float compra, frete, total;
+
+    printf("Digite o valor da compra: ");
+    scanf("%f", &compra);
+
+    if (compra >= 200) {
+        frete = 0;
+    } else {
+        frete = 20;
+    }
+
+    total = compra + frete;
+
+    printf("Valor da compra: R$ %.2f\n", compra);
+    printf("Valor do frete: R$ %.2f\n", frete);
+    printf("Total: R$ %.2f\n", total);
+	return 0;
+}

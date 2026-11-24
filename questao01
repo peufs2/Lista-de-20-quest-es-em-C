@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+	float salario_bruto;
+    float desconto1, desconto2;
+    float valor_desconto1, valor_desconto2, salario_final;
+
+    printf("Digite o salario bruto: ");
+    scanf("%f", &salario_bruto);
+
+    printf("Digite o primeiro desconto (em %%): ");
+    scanf("%f", &desconto1);
+
+    printf("Digite o segundo desconto (em %%): ");
+    scanf("%f", &desconto2);
+
+    valor_desconto1 = salario_bruto * (desconto1 / 100.0);
+    valor_desconto2 = salario_bruto * (desconto2 / 100.0);
+    salario_final = salario_bruto - valor_desconto1 - valor_desconto2;
+
+    printf("\n--- Resumo ---\n");
+    printf("Valor do 1 desconto: %.2f\n", valor_desconto1);
+    printf("Valor do 2 desconto: %.2f\n", valor_desconto2);
+    printf("Salario final: %.2f\n", salario_final);
+	return 0;
+}

@@ -1,0 +1,46 @@
+// Analise de temperaturas 15
+
+#include <stdio.h>
+
+int main() {
+    float temperaturas[10];
+    float soma = 0.0, media, maior, menor;
+    int acimaMedia = 0;
+
+
+    for (int i = 0; i < 10; i++) {
+        printf("Digite a %da temperatura: ", i + 1);
+        scanf("%f", &temperaturas[i]);
+        soma += temperaturas[i];
+
+    
+        if (i == 0) {
+            maior = temperaturas[i];
+            menor = temperaturas[i];
+        } else {
+            if (temperaturas[i] > maior) {
+                maior = temperaturas[i];
+            }
+            if (temperaturas[i] < menor) {
+                menor = temperaturas[i];
+            }
+        }
+    }
+
+    media = soma / 10.0;
+
+   
+    for (int i = 0; i < 10; i++) {
+        if (temperaturas[i] > media) {
+            acimaMedia++;
+        }
+    }
+
+    printf("\n--- ANALISE DE TEMPERATURAS ---\n");
+    printf("Media das temperaturas: %.2f\n", media);
+    printf("Maior temperatura: %.2f\n", maior);
+    printf("Menor temperatura: %.2f\n", menor);
+    printf("Quantidade acima da media: %d\n", acimaMedia);
+
+    return 0;
+}

@@ -1,0 +1,59 @@
+// Sistema de pagamento 13
+
+#include <stdio.h>
+
+
+void exibirFormasPagamento(void);
+float calcularDesconto(float valorCompra, int formaPagamento);
+float calcularTotal(float valorCompra, int formaPagamento);
+
+int main(void) {
+    float valorCompra, desconto, total;
+    int formaPagamento;
+
+    printf("Digite o valor da compra: R$ ");
+    scanf("%f", &valorCompra);
+
+    if (valorCompra <= 0) {
+        printf("Valor de compra invalido.\n");
+        return 1;
+    }
+
+    exibirFormasPagamento();
+    scanf("%d", &formaPagamento);
+
+    if (formaPagamento < 1 || formaPagamento > 3) {
+        printf("Forma de pagamento invalida!\n");
+        return 1;
+    }
+
+    desconto = calcularDesconto(valorCompra, formaPagamento);
+    total = calcularTotal(valorCompra, formaPagamento);
+
+    printf("\n--- Resumo do Pedido ---\n");
+    printf("Valor original: R$ %.2f\n", valorCompra);
+    printf("Desconto aplicado: R$ %.2f\n", desconto);
+    printf("Total a pagar: R$ %.2f\n", total);
+
+    return 0;
+}
+
+void exibirFormasPagamento(void) {
+    printf("\n--- Formas de Pagamento ---\n");
+    printf("1 - PIX (5%% de desconto)\n");
+    printf("2 - Cartao (sem desconto)\n");
+    printf("3 - Dinheiro (sem desconto)\n");
+    printf("Escolha uma opcao: ");
+}
+
+float calcularDesconto(float valorCompra, int formaPagamento) {
+    if (formaPagamento == 1) {
+        return valorCompra * 0.05f; 
+    }
+    return 0.0f; 
+}
+
+float calcularTotal(float valorCompra, int formaPagamento) {
+    float desconto = calcularDesconto(valorCompra, formaPagamento);
+    return valorCompra - desconto;
+}

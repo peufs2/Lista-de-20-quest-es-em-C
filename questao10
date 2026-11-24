@@ -1,0 +1,63 @@
+// Calculadora cientifica 10
+
+#include <stdio.h>
+
+int main() {
+double raiz(double numero) {
+    return sqrt(numero);
+}
+
+double quadrado(double numero) {
+    return pow(numero, 2);
+}
+
+double arredondamento(double numero) {
+    return round(numero);
+}
+    int opcao;
+    double numero;
+
+    do {
+        printf("\n===== CALCULADORA =====\n");
+        printf("1 - Raiz quadrada\n");
+        printf("2 - Potencia ao quadrado\n");
+        printf("3 - Arredondamento\n");
+        printf("0 - Sair\n");
+
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao >= 1 && opcao <= 3) {
+
+            printf("Digite um numero: ");
+            scanf("%lf", &numero);
+
+            switch (opcao) {
+
+                case 1:
+                    if (numero >= 0) {
+                        printf("Resultado: %.2f\n", raiz(numero));
+                    } else {
+                        printf("Nao existe raiz real para esse numero.\n");
+                    }
+                    break;
+
+                case 2:
+                    printf("Resultado: %.2f\n", quadrado(numero));
+                    break;
+
+                case 3:
+                    printf("Resultado: %.2f\n", arredondamento(numero));
+                    break;
+            }
+
+        } else if (opcao != 0) {
+            printf("Opcao invalida!\n");
+        }
+
+    } while (opcao != 0);
+
+    printf("Calculadora encerrada!\n");
+
+	return 0;
+}
